@@ -1,4 +1,4 @@
-package com.javatechie.springredditclone.service;
+package com.javatechie.cicd;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
