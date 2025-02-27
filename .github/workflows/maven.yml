@@ -1,3 +1,4 @@
+
 name: project cicd flow
 
 on:
@@ -34,23 +35,3 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-  # CodeQL Analysis Job
-  analyze:
-    name: CodeQL Analysis
-    runs-on: ubuntu-latest  # Run CodeQL on Ubuntu for better performance
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up CodeQL
-        uses: github/codeql-action/setup-codeql@v2
-      - name: Initialize CodeQL Database
-        run: |
-          codeql database create codeql-db --language=java
-      - name: Run CodeQL Analysis
-        run: |
-          codeql analyze codeql-db --format=sarif-latest --output=codeql-report.sarif
-      - name: Upload CodeQL Report as Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: codeql-report
-          path: codeql-report.sarif
